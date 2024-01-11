@@ -8,9 +8,6 @@ interface StopWatchProps {
 }
 
 export default function StopWatch({time, running, onToggle}: StopWatchProps) {
-
-
-
     return(
         <div>
             <h1>STOPWATCH</h1>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import StopWatch from './StopWatch'
 
 export default function App() {
@@ -6,8 +6,21 @@ export default function App() {
     const [time, setTime] = useState(0)
 
     const toggleRunning = () => {
-        setRunning(false)
+        setRunning(!running)
     }
+
+    useEffect(() => {
+
+        let interval: any;
+
+        if(running) {
+            interval = setInterval(() => {
+                setTime((previousTime) => previousTime +1);
+            }, 1000)
+        }
+
+        return () => clearInterval(interval);
+    }, [running]);
 
 
     return(
