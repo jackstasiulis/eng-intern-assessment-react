@@ -1,10 +1,18 @@
-import React from 'react'
+import React, { useState } from 'react'
+import StopWatch from './StopWatch'
 
 export default function App() {
+    const [running, setRunning] = useState(false);
+    const [time, setTime] = useState(0)
+
+    const toggleRunning = () => {
+        setRunning(false)
+    }
+
+
     return(
         <div>
-            <h1>jack stasiulis - stopwatch</h1>
-
+            <StopWatch time={time} running={running} onToggle={toggleRunning} />
         </div>
     )
 }
