@@ -10,22 +10,45 @@ export default function App() {
     }
 
     useEffect(() => {
-
         let interval: any;
 
         if(running) {
             interval = setInterval(() => {
-                setTime((previousTime) => previousTime +1);
-            }, 1000)
+                setTime((previousTime) => previousTime + 1);
+            }, 10)
         }
 
         return () => clearInterval(interval);
     }, [running]);
 
+    // this function takes in our 'time' state variable and turns it into our nice 00:00:00 stopwatch format
+    const timeFormatter = (timeInMilliseconds:number): [string, string, string] => {
+        const total = Math.floor(timeInMilliseconds / 1000);
+        const minutes = Math.floor(total / 60);
+        const seconds = total % 60;
+        const remainingMilliseconds = timeInMilliseconds % 1000;
+
+        // since we want our watch to always display 6 digits, we use the ternary to display 0 if the value is less than 10
+        const formattedMinutes = minutes < 10 ? `0${minutes}` : `${minutes}`;
+        const formattedSeconds = seconds < 10 ? `0${seconds}` : `${seconds}`;
+        // was experiencing a weird rapid cycle with the milliseconds cycling down to 0 so I hope this inconsistency is alright!
+        const formattedMilliseconds = remainingMilliseconds.toString().padStart(3, '0').slice(0, 2);
+
+        return [formattedMinutes, formattedSeconds, formattedMilliseconds];
+    }
+    // here is where we pass in the 'time' state variable
+    const [formattedMinutes, formattedSeconds, formattedMilliseconds] = timeFormatter(time*10)
 
     return(
         <div>
-            <StopWatch time={time} running={running} onToggle={toggleRunning} />
+            <StopWatch 
+            running={running} 
+            onToggle={toggleRunning}
+            minutes={formattedMinutes}
+            seconds={formattedSeconds}
+            milliseconds={formattedMilliseconds}
+            />
+
         </div>
     )
 }
