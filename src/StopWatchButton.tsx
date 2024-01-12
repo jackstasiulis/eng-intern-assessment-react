@@ -9,11 +9,13 @@ interface StopWatchButtonProps {
 }
 
 export default function StopWatchButton({running, startStop, resetTime, recordLap}: StopWatchButtonProps) {
+    // these ternarys determine which button will have which function/label
     const handleClick = resetTime ? resetTime : recordLap ? recordLap : startStop;
     const buttonText = resetTime ? 'Reset' : recordLap ? 'Lap' : running ? 'stop' : 'Start';
+    // more buttons can easily be added by editing these ternarys
 
     return(
-        <div>
+        <div> {/* handleClick and buttonText determined above! */}
             <button onClick={handleClick}>{buttonText}</button>
         </div>
     )
