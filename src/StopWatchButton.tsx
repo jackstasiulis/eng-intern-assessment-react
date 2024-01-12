@@ -10,7 +10,7 @@ interface StopWatchButtonProps {
 
 export default function StopWatchButton({running, startStop, resetTime, recordLap}: StopWatchButtonProps) {
     const handleClick = resetTime ? resetTime : recordLap ? recordLap : startStop;
-    const buttonText = resetTime ? 'reset' : recordLap ? 'lap' : running ? 'stop' : 'start';
+    const buttonText = resetTime ? 'Reset' : recordLap ? 'Lap' : running ? 'stop' : 'Start';
 
     return(
         <div>

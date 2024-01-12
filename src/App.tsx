@@ -29,6 +29,7 @@ export default function App() {
         }
     }
 
+
     // for starting or stopping stopwatch when the running state changes
     useEffect(() => {
         let interval: any;
