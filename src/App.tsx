@@ -9,15 +9,23 @@ export default function App() {
         setRunning(!running)
     }
 
+    const resetTime = () => {
+        setRunning(false)
+        setTime(0)
+    }
+
+    // for starting or stopping stopwatch when the running state changes
     useEffect(() => {
         let interval: any;
 
+        // if the running state is true, add time to the stopwatch
         if(running) {
             interval = setInterval(() => {
                 setTime((previousTime) => previousTime + 1);
             }, 10)
         }
-
+        // this is where we stop the interval from increasing when the 'running' state changes
+        // aka, we stop our clock
         return () => clearInterval(interval);
     }, [running]);
 
@@ -47,6 +55,9 @@ export default function App() {
             minutes={formattedMinutes}
             seconds={formattedSeconds}
             milliseconds={formattedMilliseconds}
+
+            resetTime={resetTime}
+
             />
 
         </div>
