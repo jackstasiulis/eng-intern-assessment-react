@@ -16,7 +16,7 @@ export default function StopWatch({running, minutes, seconds, milliseconds, star
     return(
         <div>
             <h1>STOPWATCH By: Jack Stasiulis</h1>
-            <h2>{minutes}:{seconds}:{milliseconds}</h2> {/* here is our stopwatch clock */}
+            <h2>{`${minutes}:${seconds}:${milliseconds}`}</h2> {/* here is our stopwatch clock */}
 
             {/* our three buttons using the same StopWatchButton component */}
             {/* each is passed its necessary props in order to determine which button it becomes */}
@@ -27,7 +27,7 @@ export default function StopWatch({running, minutes, seconds, milliseconds, star
             {/* mapping thru our array of laps as they are created */}
             {/* when clicked, the lapList state var updates and adds a new lap */}
             <ul>
-                {lapList.map((lap, index) => (
+                {lapList && lapList.map((lap, index) => (
                     <li key={index}>
                         <p>{lap}</p>
                     </li>
