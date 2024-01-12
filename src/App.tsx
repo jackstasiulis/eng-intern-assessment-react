@@ -4,14 +4,24 @@ import StopWatch from './StopWatch'
 export default function App() {
     const [running, setRunning] = useState(false);
     const [time, setTime] = useState(0)
+    const [laplist, setLaplist] = useState<string[]>([])
 
-    const toggleRunning = () => {
+    const startStop = () => {
         setRunning(!running)
     }
 
     const resetTime = () => {
         setRunning(false)
         setTime(0)
+        setLaplist([])
+    }
+
+    const recordLap = () => {
+        const lap = timeFormatter(time*10)
+        console.log(lap);
+        // setLaplist(`${lap}`)
+        setLaplist(previousLap => [...previousLap, lap.join(':')])
+        // spread on previousLap so we keep our old laps listed
     }
 
     // for starting or stopping stopwatch when the running state changes
@@ -51,13 +61,16 @@ export default function App() {
         <div>
             <StopWatch 
             running={running} 
-            onToggle={toggleRunning}
+            startStop={startStop}
             minutes={formattedMinutes}
             seconds={formattedSeconds}
             milliseconds={formattedMilliseconds}
 
             resetTime={resetTime}
 
+            recordLap={recordLap}
+
+            lapList={laplist}
             />
 
         </div>
