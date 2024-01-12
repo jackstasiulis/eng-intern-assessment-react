@@ -1,7 +1,7 @@
 import React from 'react'
 
 interface StopWatchButtonProps {
-    // making the props optional so we can use a single button
+    // making the props optional so we can use a single button component
     running?: boolean;
     startStop?: () => void;
     resetTime?: () => void;

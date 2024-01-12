@@ -20,19 +20,15 @@ export default function StopWatch({running, startStop, minutes, seconds, millise
 
             <StopWatchButton running={running} startStop={startStop} />
             <StopWatchButton resetTime={resetTime} />
-
             <StopWatchButton recordLap={recordLap} />
 
             <ul>
                 {lapList.map((lap, index) => (
-                <li key={index}>
-                    <p>{lap}</p>
-                </li>
+                    <li key={index}>
+                        <p>{lap}</p>
+                    </li>
                 ))}
             </ul>
-
-
-
         </div>
     )
 }
