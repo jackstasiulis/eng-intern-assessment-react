@@ -13,6 +13,8 @@ interface StopWatchProps {
 }
 
 export default function StopWatch({running, minutes, seconds, milliseconds, startStop, resetTime, recordLap, lapList}: StopWatchProps) {
+
+    
     return(
         <div>
             <h1>STOPWATCH By: Jack Stasiulis</h1>
@@ -26,7 +28,7 @@ export default function StopWatch({running, minutes, seconds, milliseconds, star
 
             {/* mapping thru our array of laps as they are created */}
             {/* when clicked, the lapList state var updates and adds a new lap */}
-            <ul>
+            <ul data-testid='lap-list'>
                 {lapList && lapList.map((lap, index) => (
                     <li key={index}>
                         <p>{lap}</p>
