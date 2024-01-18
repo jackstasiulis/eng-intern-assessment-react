@@ -1,5 +1,7 @@
+import "./App.css"
+
 import React, { useEffect, useState } from 'react'
-import StopWatch from './StopWatch'
+import StopWatch from './Components/StopWatch/StopWatch'
 
 export default function App() {
     // declaring our state variables
@@ -28,7 +30,6 @@ export default function App() {
             // spread on previousLap so we keep our old laps listed
         }
     }
-
 
     // for starting or stopping stopwatch when the running state changes
     useEffect(() => {
@@ -64,7 +65,7 @@ export default function App() {
     const [formattedMinutes, formattedSeconds, formattedMilliseconds] = timeFormatter(time)
 
     return(
-        <div>
+        <div className='app'>
             {/* passing all the props to our StopWatch component */}
             {/* props needed by StopWatchButton will be passed within StopWatch */}
             <StopWatch 

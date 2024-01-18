@@ -1,4 +1,5 @@
 import React from 'react'
+import './StopWatchButton.css'
 
 interface StopWatchButtonProps {
     // making the props optional so we can use a single button component
@@ -15,8 +16,8 @@ export default function StopWatchButton({running, startStop, resetTime, recordLa
     // more buttons can easily be added by editing these ternarys
 
     return(
-        <div> {/* handleClick and buttonText determined above! */}
-            <button onClick={handleClick}>{buttonText}</button>
+        <div className='stopwatch__button--container'> {/* handleClick and buttonText determined above! */}
+            <button className='stopwatch__button' onClick={handleClick}>{buttonText}</button>
         </div>
     )
 }
